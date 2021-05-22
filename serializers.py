@@ -8,24 +8,6 @@ class ModelSerializer(ABC):
     def __init__(self, obj):
         self._obj = obj
 
-    # def __init__(self, **kwargs):
-    #     self.__field_type = kwargs.get('field_type_map', {})
-    #     self.__data = {}
-    #
-    # def validate(self, **kwargs):
-    #     raise NotImplementedError()
-    #
-    # def validated_data(self):
-    #     """
-    #     Can be overridden to return validated data in desired format
-    #     """
-    #     return self.__data
-    #
-    # def get_field_type(self, field_name):
-    #     if not self.__field_type.get(field_name, None):
-    #         raise SerializerException("Improperly Configured serializer")
-    #     return self.__field_type.get(field_name)
-
     @property
     def data(self):
         return vars(self._obj)
