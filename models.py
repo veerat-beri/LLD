@@ -16,14 +16,14 @@ class Location:
 
 
 class User:
-    def __init__(self):
-        self.name = ''
-        self.age = 0
-        self.gender = Gender.MALE
-        self.salary = 0
-        self.past_order_amount = 0
-        self.is_affluent = False
-        self.location: Location = None
+    def __init__(self, name, age, gender, salary, past_order_amount, is_affluent, location: Location):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.salary = salary
+        self.past_order_amount = past_order_amount
+        self.is_affluent = is_affluent
+        self.location = location
 
     def __repr__(self):
         return f'User(name={self.name}, age={self.age}, gender={self.gender}, salary={self.salary})'

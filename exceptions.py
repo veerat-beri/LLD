@@ -17,3 +17,10 @@ class InvalidOperatorException(Exception):
         self.operator = operator_repr
         self.message = message or 'operator: {} is not valid'.format(self.operator)
         super().__init__(self.message)
+
+
+class SetUserAttributeException(Exception):
+    def __init__(self, attribute: str, message=''):
+        self.attribute = attribute
+        self.message = message or 'Illegal type/value for user-attribute: {}'.format(self.attribute)
+        super().__init__(self.message)
