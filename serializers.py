@@ -6,7 +6,7 @@ class ModelSerializer(ABC):
     Abstract class for all Model Serializers
     """
     def __init__(self, obj):
-        self.__obj = obj
+        self._obj = obj
 
     # def __init__(self, **kwargs):
     #     self.__field_type = kwargs.get('field_type_map', {})
@@ -28,7 +28,7 @@ class ModelSerializer(ABC):
 
     @property
     def data(self):
-        return vars(self.__obj)
+        return vars(self._obj)
 
 
 class LocationSerializer(ModelSerializer):
@@ -45,10 +45,12 @@ class UserSerializer(ModelSerializer):
 
     @property
     def data(self):
-        attr_dict = vars(self.__obj)
-        attr_dict['location'] = LocationSerializer(self.__obj.location)
-        attr_dict['city'] = self.__obj.location.city
-        attr_dict['latitude'] = self.__obj.location.latitude
-        attr_dict['longitude'] = self.__obj.location.longitude
+        attr_dict = vars(self._obj)
+        if self._obj.location:
+            attr_dict['location'] = LocationSerializer(self._obj.location).data
+            attr_dict['city'] = self._obj.location.city
+            attr_dict['latitude'] = self._obj.location.latitude
+            attr_dict['longitude'] = self._obj.location.longitude
+
         return attr_dict
 

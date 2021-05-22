@@ -16,8 +16,10 @@ class ExpressionService:
 
     def evaluate_postfix_expression(self, user_context: {}, postfix_expression: str):
         stack = []
+        print("postfix_expression: ", postfix_expression)
 
-        for element in postfix_expression.split():
+        for element in postfix_expression.strip().split():
+            # print(stack, element)
             if self.is_operator(element):
                 logical_operator = self.operator_factory.get_operator(element)
                 operands_list = [stack.pop() for _ in range(logical_operator.total_operands)]
@@ -37,7 +39,7 @@ class ExpressionService:
         operator_stack: List[str] = []
         delimiter = ' '
 
-        for element in expression.split():
+        for element in expression.strip().split():
             if self.is_operator(element):
                 while operator_stack and (operator_stack[-1] not in self.opening_parenthesis) and \
                         self.operator_factory.get_operator(element).precedence <= self.operator_factory.get_operator(operator_stack[-1]).precedence:

@@ -1,4 +1,5 @@
 import sys
+import traceback
 
 from builders import UserBuilder
 from expression.service import ExpressionService
@@ -10,12 +11,13 @@ class ApiInterface:
     def __init__(self):
         self.service_inst = ExpressionService()
 
-    def is_user_allowed(self, user: User, expression: str):
+    def is_user_allowed(self, user: User, infix_expression: str):
         try:
             user_context = UserSerializer(user).data
-            return self.service_inst.evaluate_postfix_expression(user_context, expression)
+            postfix_expression = self.service_inst.infix_to_postfix(infix_expression)
+            return self.service_inst.evaluate_postfix_expression(user_context, postfix_expression)
         except:
-            print("Error: ", sys.exc_info()[0])
+            traceback.print_exc()
 
     def create_user(self, **kwargs):
         user_builder = UserBuilder()

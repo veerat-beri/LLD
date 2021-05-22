@@ -26,4 +26,5 @@ class User:
         self.location = location
 
     def __repr__(self):
-        return f'User(name={self.name}, age={self.age}, gender={self.gender}, salary={self.salary})'
+        return f'User(name={self.name}, age={self.age}, gender={self.gender}, salary={self.salary}, ' \
+               f'past_order_amount={self.past_order_amount})'

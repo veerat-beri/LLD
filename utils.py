@@ -23,5 +23,4 @@ def get_closing_opening_parenthesis_map():
         '}': '{',
         ']': '[',
         ')': '(',
-        '>': '<',
     }

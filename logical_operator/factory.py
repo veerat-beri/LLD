@@ -19,6 +19,7 @@ class OperatorFactory(SingletonMixin):
                     GreaterThan(), GreaterThanEqualTo(), LessThan(), LessThanEqualTo(), ExactlyEqualTo(),
                     NotEqualTo(), AllOf(), Between(), NoneOf(), Or(), And(), Not()]
             }
+            print("Available operators: ", list(self.__operator_map.keys()), end='\n\n')
 
     @property
     def available_operators(self):

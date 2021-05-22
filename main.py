@@ -11,8 +11,8 @@ def test_user_gateway():
     user = api_interface.create_user(**user_data)
 
     print('User: ', user)
-    expression = '( age > 25 and gender == male) or past_order_amount > 10000'
-    print('is user allowed:', api_interface.is_user_allowed(user, expression))
+    expression = '( age > 25 and gender == male ) or past_order_amount > 10000'
+    print('is user allowed:', bool(api_interface.is_user_allowed(user, expression)))
 
 
 if __name__ == '__main__':
